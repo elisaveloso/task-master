@@ -5,9 +5,10 @@ using namespace std;
 
 // Model
 class Task {
-public:
+
     std::string description;
     bool completed;
-
+    
+public:
     Task(const std::string& desc) : description(desc), completed(false) {}
 };
