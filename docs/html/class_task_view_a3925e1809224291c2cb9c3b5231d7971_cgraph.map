@@ -1,0 +1,7 @@
+<map id="TaskView::taskUpdated" name="TaskView::taskUpdated">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,164,57"/>
+<area shape="rect" id="Node000002" href="$class_task.html#a4ae4f44f07ea10c5b93020ee1f307e50" title=" " alt="" coords="213,5,351,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,31,198,27,198,32,164,36"/>
+<area shape="rect" id="Node000003" href="$class_task.html#aee181400e7ff5f25762ba7140d33f941" title=" " alt="" coords="212,56,352,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,52,197,56,196,61,164,57"/>
+</map>

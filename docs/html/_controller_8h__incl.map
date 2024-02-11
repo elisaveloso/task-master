@@ -1,0 +1,12 @@
+<map id="src/controller/Controller.h" name="src/controller/Controller.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="33,5,199,32"/>
+<area shape="rect" id="Node000002" href="$_task_8h.html" title=" " alt="" coords="5,155,117,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,35,57,54,44,66,34,81,30,96,32,111,45,141,40,143,26,112,25,95,29,79,40,63,54,50,84,30"/>
+<area shape="rect" id="Node000004" href="$_observer_8h.html" title=" " alt="" coords="44,80,188,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="118,33,118,64,113,64,113,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="212,80,267,107"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="139,30,207,70,204,74,136,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="34,229,88,256"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,182,64,214,58,214,58,182"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="108,109,82,144,78,140,104,106"/>
+</map>

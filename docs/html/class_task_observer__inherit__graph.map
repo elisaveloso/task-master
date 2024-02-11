@@ -1,0 +1,9 @@
+<map id="TaskObserver" name="TaskObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="80,5,180,32"/>
+<area shape="rect" id="Node000002" href="$class_concrete_observer.html" title=" " alt="" coords="5,80,130,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,46,80,81,76,78,107,42"/>
+<area shape="rect" id="Node000003" href="$class_task_view.html" title=" " alt="" coords="154,80,232,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,42,184,78,180,81,149,46"/>
+<area shape="rect" id="Node000004" href="$class_view_impl.html" title=" " alt="" coords="156,155,230,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,122,196,154,190,154,190,122"/>
+</map>

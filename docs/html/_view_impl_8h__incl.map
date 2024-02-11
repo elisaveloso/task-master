@@ -1,0 +1,12 @@
+<map id="src/view/ViewImpl.h" name="src/view/ViewImpl.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="59,304,113,331"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,33,68,96,67,181,75,256,82,288,76,289,70,256,62,181,63,96,68,32"/>
+<area shape="rect" id="Node000003" href="$_view_8h.html" title=" " alt="" coords="97,80,157,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="84,31,111,66,106,69,80,34"/>
+<area shape="rect" id="Node000004" href="$_observer_8h.html" title=" " alt="" coords="76,155,221,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="133,106,143,139,138,141,128,108"/>
+<area shape="rect" id="Node000005" href="$_task_8h.html" title=" " alt="" coords="85,229,196,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="150,182,146,214,141,213,144,182"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="133,258,107,293,102,290,129,255"/>
+</map>

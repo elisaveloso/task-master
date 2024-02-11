@@ -1,0 +1,7 @@
+<map id="TaskController::updateTaskStatus" name="TaskController::updateTaskStatus">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,185,65"/>
+<area shape="rect" id="Node000002" href="$class_task_controller.html#a6b771363a74f5508b1da3b9b1afac498" title=" " alt="" coords="233,5,434,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,32,217,28,217,34,185,37"/>
+<area shape="rect" id="Node000003" href="$class_task.html#a191041efdfadf019918b8c4b173ba061" title=" " alt="" coords="265,56,402,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,51,250,58,249,63,185,56"/>
+</map>
