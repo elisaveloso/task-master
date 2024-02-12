@@ -1,3 +1,4 @@
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "../../src/controller/ControllerImpl.h"
 #include "../../src/model/Task.h"
@@ -19,6 +20,15 @@ TEST_CASE("Unit Tests") {
             // Verifique se o status da tarefa foi atualizado corretamente
             REQUIRE(controller.getModel().getCompleted() == true);
         }
+
+        SECTION("Assign Task to User") {
+            Task task("Sample Task");
+            User user("John Doe");
+
+            controller.assignTask(task, user);
+            // Verifique se a tarefa foi atribuída corretamente ao usuário
+            REQUIRE(task.getAssignedUser().getName() == user.getName());
+        }
     }
 
     SECTION("Task Model") {
@@ -36,6 +46,17 @@ TEST_CASE("Unit Tests") {
             // Defina o status de conclusão como verdadeiro e verifique
             task.setCompleted(true);
             REQUIRE(task.getCompleted() == true);
+        }
+    }
+
+    SECTION("Observer") {
+        ConcreteObserver observer;
+        Task task("Sample Task");
+
+        SECTION("Observer Task Update") {
+            observer.taskUpdated(task);
+            // Verifique se o observador atualizou corretamente a tarefa
+            REQUIRE(observer.getUpdatedTask().getDescription() == "Sample Task");
         }
     }
 }
