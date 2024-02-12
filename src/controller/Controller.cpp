@@ -1,5 +1,33 @@
 #include "Controller.h"
 #include "ControllerImpl.h"
+#include <string>
+
+using namespace std;
+
+
+// Controller
+class TaskController {
+private:
+    Task model;
+    std::vector<TaskObserver*> observers;
+
+public:
+    void addObserver(TaskObserver* observer) {
+        observers.push_back(observer);
+    }
+
+    void updateTaskStatus(bool completed) {
+        model.completed = completed;
+        notifyObservers();
+    }
+
+private:
+    void notifyObservers() {
+        for (auto observer : observers) {
+            observer->taskUpdated(model);
+        }
+    }
+};
 
 // Implementação do método para atribuir uma tarefa a um usuário
 void TaskController::assignTask(Task& task, User& user) {
@@ -30,5 +58,3 @@ void TaskController::removeUser(User& user) {
     // Remova o usuário do sistema
     // Implemente de acordo com os requisitos do sistema
 }
-
-// Métodos existentes...
