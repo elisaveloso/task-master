@@ -16,7 +16,6 @@ TEST_CASE("Functional Tests") {
     REQUIRE(db.open());
 
     SECTION("TaskController and ConcreteObserver Interaction") {
-        // Criação do banco de dados e tabelas
         QSqlQuery query;
         query.exec("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, description TEXT, completed INTEGER)");
         REQUIRE(!query.lastError().isValid());
@@ -29,14 +28,12 @@ TEST_CASE("Functional Tests") {
 
         REQUIRE(observer.getUpdatedTask().getCompleted() == true);
 
-        // Verificação dos dados no banco de dados
         query.exec("SELECT completed FROM tasks WHERE id = 1");
         REQUIRE(query.next());
         REQUIRE(query.value(0).toBool() == true);
     }
 
     SECTION("Task Creation and Assignment") {
-        // Criação do banco de dados e tabelas
         QSqlQuery query;
         query.exec("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, description TEXT, completed INTEGER)");
         REQUIRE(!query.lastError().isValid());
@@ -52,7 +49,6 @@ TEST_CASE("Functional Tests") {
 
         REQUIRE(task.getAssignedUser().getName() == user.getName());
 
-        // Verificação dos dados no banco de dados
         query.exec("SELECT description FROM tasks WHERE id = 1");
         REQUIRE(query.next());
         REQUIRE(query.value(0).toString() == "Nova Tarefa");
