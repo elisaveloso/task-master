@@ -1,41 +1,60 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "../../src/controller/ControllerImpl.h" // Inclua a implementação do controlador
-#include "../../src/observer/ObserverImpl.h" // Inclua a implementação do observador
-#include "../../src/model/Task.h" // Inclua a definição de tarefa
+#include "../../src/controller/ControllerImpl.h"
+#include "../../src/observer/ObserverImpl.h"
+#include "../../src/model/Task.h"
+#include "../../src/model/User.h"
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
 
 TEST_CASE("Functional Tests") {
+    // Configuração do banco de dados em memória
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(":memory:");
+    REQUIRE(db.open());
+
     SECTION("TaskController and ConcreteObserver Interaction") {
-        TaskControllerImpl controller; // Instância do controlador
-        ConcreteObserver observer; // Instância do observador
+        // Criação do banco de dados e tabelas
+        QSqlQuery query;
+        query.exec("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, description TEXT, completed INTEGER)");
+        REQUIRE(!query.lastError().isValid());
+
+        TaskControllerImpl controller;
+        ConcreteObserver observer;
 
         controller.addObserver(&observer);
-
-        // Simule a atualização do status da tarefa para concluída
         controller.updateTaskStatus(true);
 
-        // Verifique se o observador foi notificado corretamente
         REQUIRE(observer.getUpdatedTask().getCompleted() == true);
+
+        // Verificação dos dados no banco de dados
+        query.exec("SELECT completed FROM tasks WHERE id = 1");
+        REQUIRE(query.next());
+        REQUIRE(query.value(0).toBool() == true);
     }
 
     SECTION("Task Creation and Assignment") {
-        TaskControllerImpl controller; // Instância do controlador
+        // Criação do banco de dados e tabelas
+        QSqlQuery query;
+        query.exec("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, description TEXT, completed INTEGER)");
+        REQUIRE(!query.lastError().isValid());
 
-        // Simule a criação de uma nova tarefa
+        TaskControllerImpl controller;
+
         Task task = controller.createTask("Nova Tarefa");
-
-        // Verifique se a tarefa foi criada corretamente
         REQUIRE(task.getDescription() == "Nova Tarefa");
         REQUIRE_FALSE(task.getCompleted());
 
-        // Simule a atribuição da tarefa a um usuário
         User user("Usuário de Teste");
         controller.assignTask(task, user);
 
-        // Verifique se a tarefa foi atribuída corretamente ao usuário
-        REQUIRE(task.getAssignedUser() == user);
-    }
+        REQUIRE(task.getAssignedUser().getName() == user.getName());
 
-    // Adicione mais seções conforme necessário para testar outros requisitos
+        // Verificação dos dados no banco de dados
+        query.exec("SELECT description FROM tasks WHERE id = 1");
+        REQUIRE(query.next());
+        REQUIRE(query.value(0).toString() == "Nova Tarefa");
+    }
 }
