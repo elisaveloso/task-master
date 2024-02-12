@@ -1,24 +1,52 @@
-#include "../controller/ControllerImpl.h" // Inclua a implementação do controlador
-#include "../view/ViewImpl.h" // Inclua a implementação da visualização
 #include "../model/Task.h"
-#include "../model/User.h" // Inclua a definição de usuário, se aplicável
+#include "../model/User.h"
+#include <QApplication>
 
 int main() {
-    TaskControllerImpl controller; // Instância do controlador
-    ViewImpl view; // Instância da visualização
+    // Cria uma instância do controlador e da visualização
+    TaskControllerImpl controller;
+    ViewImpl view;
 
-    // Adicione um observador para a visualização ao controlador
+    // Adiciona um observador para a visualização ao controlador
     controller.addObserver(&view);
 
-    // Simule a criação de uma tarefa e sua atribuição a um usuário
-    Task task = controller.createTask("Nova Tarefa");
-    User user("Usuário de Teste"); // Crie um usuário, se aplicável
-    controller.assignTask(task, user);
+    // Conecta ao banco de dados
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("tasks.db");
 
-    // Atualize o status da tarefa para concluída
-    controller.updateTaskStatus(true);
+    // Verifica se ocorreu um erro ao abrir o banco de dados
+    if (!db.open()) {
+        qDebug() << "Erro ao abrir o banco de dados:" << db.lastError().text();
+        return 1;
+    }
 
-    // Implemente o restante da lógica conforme necessário
+    // Cria a tabela 'tasks' se não existir
+    QSqlQuery query;
+    if (!query.exec("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, description TEXT, completed INTEGER)")) {
+        qDebug() << "Erro ao criar a tabela 'tasks':" << query.lastError().text();
+        return 1;
+    }
 
-    return 0;
+    // Simula a criação de uma tarefa
+    Task task("Nova Tarefa");
+
+    // Insere a tarefa na tabela 'tasks'
+    query.prepare("INSERT INTO tasks (description, completed) VALUES (:description, :completed)");
+    query.bindValue(":description", task.getDescription());
+    query.bindValue(":completed", task.isCompleted() ? 1 : 0);
+    if (!query.exec()) {
+        qDebug() << "Erro ao inserir a tarefa:" << query.lastError().text();
+        return 1;
+    }
+
+    // Consulta as tarefas na tabela 'tasks' e exibe na tela
+    query.exec("SELECT id, description, completed FROM tasks");
+    while (query.next()) {
+        int id = query.value(0).toInt();
+        QString description = query.value(1).toString();
+        bool completed = query.value(2).toBool();
+        qDebug() << "ID:" << id << "Descrição:" << description << "Concluída:" << completed;
+    }
+
+    return query.exec();
 }

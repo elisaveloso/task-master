@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../model/Task.h"
-#include "../model/User.h" // Adicionar a inclusão da classe User
-#include "../observer/observer.h"
+#include "../model/User.h"
+#include "../observer/Observer.h"
 #include <vector>
 
 class TaskController {

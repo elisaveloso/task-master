@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef CONTROLLERIMPL_H
+#define CONTROLLERIMPL_H
 
 #include "Controller.h"
 
@@ -15,3 +17,5 @@ public:
     void addUser(User& user) override;
     void removeUser(User& user) override;
 };
+
+#endif
