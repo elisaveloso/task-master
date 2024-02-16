@@ -36,3 +36,10 @@ void TaskControllerImpl::addUser(User& user) {
 void TaskControllerImpl::removeUser(User& user) {
     // Implemente a lógica para remover um usuário
 }
+
+// Implementação dos métodos existentes
+
+void TaskControllerImpl::addComment(Task& task, const std::string& comment) {
+    // Adiciona o comentário à lista de comentários associada à tarefa
+    comments[task].push_back(comment);
+}

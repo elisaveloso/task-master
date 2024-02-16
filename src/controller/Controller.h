@@ -9,6 +9,7 @@ class TaskController {
 protected:
     Task model;
     std::vector<TaskObserver*> observers;
+    std::map<Task, std::vector<std::string>> comments; // Armazena os comentários associados a cada tarefa
 
 public:
     virtual void addObserver(TaskObserver* observer);
@@ -18,6 +19,7 @@ public:
     virtual Task createTask(const std::string& description); // Criar uma nova tarefa
     virtual void addUser(User& user); // Adicionar um usuário
     virtual void removeUser(User& user); // Remover um usuário
+    virtual void addComment(Task& task, const std::string& comment); // Adicionar um comentário a uma tarefa
 
 protected:
     virtual void notifyObservers();

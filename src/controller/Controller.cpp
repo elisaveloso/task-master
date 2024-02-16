@@ -58,3 +58,8 @@ void TaskController::removeUser(User& user) {
     // Remova o usuário do sistema
     // Implemente de acordo com os requisitos do sistema
 }
+
+void TaskController::addComment(Task& task, const std::string& comment) {
+    // Adiciona o comentário à lista de comentários associada à tarefa
+    comments[task].push_back(comment);
+}

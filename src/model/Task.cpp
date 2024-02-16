@@ -3,10 +3,25 @@
 
 #include "Task.h"
 
-class TaskImpl : public Task {
-public:
-    TaskImpl(const std::string& description = "", bool completed = false);
-    virtual ~TaskImpl();
-};
+Task::Task(const std::string& desc) : description(desc), completed(false), priority(Priority::Low) {}
 
-#endif
+const std::string& Task::getDescription() const {
+    return description;
+}
+
+bool Task::getCompleted() const {
+    return completed;
+}
+
+void Task::setCompleted(bool completed) {
+    this->completed = completed;
+}
+
+Task::Priority Task::getPriority() const {
+    return priority;
+}
+
+void Task::setPriority(Priority priority) {
+    this->priority = priority;
+}
+

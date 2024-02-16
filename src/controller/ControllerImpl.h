@@ -1,4 +1,3 @@
-
 #ifndef CONTROLLERIMPL_H
 #define CONTROLLERIMPL_H
 
@@ -15,6 +14,7 @@ public:
     Task createTask(const std::string& description) override;
     void addUser(User& user) override;
     void removeUser(User& user) override;
+    void addComment(Task& task, const std::string& comment) override; // Adiciona um comentário a uma tarefa
 };
 
 #endif
