@@ -63,3 +63,4 @@ void TaskController::addComment(Task& task, const std::string& comment) {
     // Adiciona o comentário à lista de comentários associada à tarefa
     comments[task].push_back(comment);
 }
+

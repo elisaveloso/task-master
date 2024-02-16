@@ -17,6 +17,7 @@ public:
 
     virtual void assignTask(Task& task, User& user); // Atribuir uma tarefa a um usuário
     virtual Task createTask(const std::string& description); // Criar uma nova tarefa
+    virtual std::unique_ptr<Task> createTask(const std::string& description); // Método de fábrica para criar uma nova tarefa
     virtual void addUser(User& user); // Adicionar um usuário
     virtual void removeUser(User& user); // Remover um usuário
     virtual void addComment(Task& task, const std::string& comment); // Adicionar um comentário a uma tarefa

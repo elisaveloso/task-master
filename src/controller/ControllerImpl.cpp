@@ -43,3 +43,9 @@ void TaskControllerImpl::addComment(Task& task, const std::string& comment) {
     // Adiciona o comentário à lista de comentários associada à tarefa
     comments[task].push_back(comment);
 }
+
+std::unique_ptr<Task> TaskControllerImpl::createTask(const std::string& description) {
+    // Aqui você pode decidir qual tipo de tarefa criar com base em alguma lógica
+    // Por exemplo, vamos criar uma TaskImpl neste exemplo
+    return std::make_unique<TaskImpl>(description);
+}
